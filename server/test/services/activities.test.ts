@@ -8,7 +8,7 @@ import { Activity } from '../../src/shared/entities';
 
 const randomId = () => new ObjectID().toHexString();
 
-describe('\'activities\' service', () => {
+describe('activities service', () => {
   let service: Activities;
 
   before(() => {
@@ -39,5 +39,6 @@ describe('\'activities\' service', () => {
     expect(activity.title).to.equal(payload.title);
     expect(activity.description).to.equal(payload.description);
     expect(activity.imageUrl).to.equal(payload.imageUrl);
+    expect(activity.createdById.toString()).to.equal(payload.createdById);
   });
 });
