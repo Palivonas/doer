@@ -1,17 +1,19 @@
 export interface User {
-  id: string,
+  _id: string,
   name: string,
   imageUrl: string,
 }
 
 export interface Activity {
-  id: string,
+  _id: string,
   title: string,
   imageUrl: string,
   description: string,
+  createdById: string,
 }
 
 export interface ChatMessage {
+  _id: string,
   recipientId: string,
   senderId: string,
   text: string,
@@ -19,6 +21,7 @@ export interface ChatMessage {
 }
 
 export interface Membership {
+  _id: string,
   userId: string,
   activityId: string,
   createdAt: string,

@@ -18,6 +18,7 @@
   "scripts": {
     "test": "npm run compile && npm run mocha",
     "dev": "ts-node-dev --no-notify src/",
+    "dev-db-up": "docker-compose -f docker-compose_dev.yml up -d",
     "start": "npm run compile && node lib/",
     "mocha": "ts-mocha \"test/**/*.ts\" --recursive --exit",
     "compile": "shx rm -rf lib/ && tsc"
@@ -42,6 +43,7 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.3",
     "@types/compression": "^1.0.1",
     "@types/cors": "^2.8.6",
     "@types/helmet": "0.0.44",
@@ -50,6 +52,7 @@
     "@types/mongoose": "^5.5.17",
     "@types/serve-favicon": "^2.2.31",
     "axios": "^0.19.0",
+    "chai": "^4.2.0",
     "mocha": "^6.2.0",
     "nodemon": "^1.19.2",
     "shx": "^0.3.2",

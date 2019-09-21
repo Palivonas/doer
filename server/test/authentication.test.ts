@@ -1,4 +1,4 @@
-import assert from 'assert';
+import * as assert from 'assert';
 import app from '../src/app';
 
 describe('authentication', () => {
