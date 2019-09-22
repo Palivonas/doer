@@ -1,7 +1,9 @@
 export interface User {
   _id: string,
   name: string,
+  email: string,
   imageUrl: string,
+  password?: string,
 }
 
 export interface Activity {
@@ -17,12 +19,11 @@ export interface ChatMessage {
   recipientId: string,
   senderId: string,
   text: string,
-  createdDate: string | Date,
+  createdAt: string | Date,
 }
 
 export interface Membership {
   _id: string,
   userId: string,
   activityId: string,
-  createdAt: string,
 }

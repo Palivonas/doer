@@ -1,12 +1,11 @@
 import { authenticate } from '../../hooks/authenticate';
-import { setUserId } from '../../hooks/set-user-id';
 
 export default {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [ authenticate, setUserId('createdById') ],
+    create: [ authenticate ],
     update: [ authenticate ],
     patch: [ authenticate ],
     remove: [ authenticate ],
