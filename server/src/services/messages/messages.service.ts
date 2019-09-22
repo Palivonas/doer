@@ -1,15 +1,15 @@
-// Initializes the `users` service on path `/users`
+// Initializes the `messages` service on path `/messages`
 import { ServiceAddons } from '@feathersjs/feathers';
-import { Application, ServiceTypes } from '../../declarations';
-import { Users } from './users.class';
-import createModel from '../../models/users.model';
-import hooks from './users.hooks';
-import { User } from '../../shared/entities';
+import { Application } from '../../declarations';
+import { Messages } from './messages.class';
+import createModel from '../../models/messages.model';
+import { ActivityMessage } from '../../shared/entities';
+import hooks from './messages.hooks';
 
 // Add this service to the service type index
 declare module '../../declarations' {
   interface ServiceTypes {
-    'users': Users & ServiceAddons<User>;
+    messages: Messages & ServiceAddons<ActivityMessage>;
   }
 }
 
@@ -23,10 +23,10 @@ export default function (app: Application) {
   };
 
   // Initialize our service with any options it requires
-  app.use('/users', new Users(options, app));
+  app.use('/messages', new Messages(options, app));
 
   // Get our initialized service so that we can register hooks
-  const service = app.service('users');
+  const service = app.service('messages');
 
   service.hooks(hooks);
 }

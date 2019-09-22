@@ -1,15 +1,16 @@
-// Initializes the `users` service on path `/users`
+// Initializes the `memberships` service on path `/memberships`
 import { ServiceAddons } from '@feathersjs/feathers';
-import { Application, ServiceTypes } from '../../declarations';
-import { Users } from './users.class';
-import createModel from '../../models/users.model';
-import hooks from './users.hooks';
-import { User } from '../../shared/entities';
+import { Application } from '../../declarations';
+import { Memberships } from './memberships.class';
+import createModel from '../../models/memberships.model';
+import hooks from './memberships.hooks';
+import { Membership } from '../../shared/entities';
 
 // Add this service to the service type index
 declare module '../../declarations' {
+
   interface ServiceTypes {
-    'users': Users & ServiceAddons<User>;
+    'memberships': Memberships & ServiceAddons<Membership>;
   }
 }
 
@@ -23,10 +24,10 @@ export default function (app: Application) {
   };
 
   // Initialize our service with any options it requires
-  app.use('/users', new Users(options, app));
+  app.use('/memberships', new Memberships(options, app));
 
   // Get our initialized service so that we can register hooks
-  const service = app.service('users');
+  const service = app.service('memberships');
 
   service.hooks(hooks);
 }

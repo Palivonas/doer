@@ -3,8 +3,8 @@
   "port": 3030,
   "public": "../public/",
   "paginate": {
-    "default": 10,
-    "max": 50
+    "default": 9999,
+    "max": 9999
   },
   "authentication": {
     "entity": "user",
@@ -30,8 +30,11 @@
     "oauth": {
       "redirect": "/",
       "facebook": {
-        "key": "<facebook oauth key>",
-        "secret": "<facebook oauth secret>"
+        "scope": [
+          "email"
+        ],
+        "key": "2496633420416879",
+        "secret": "94f26c615d0e26611c2f3002fe0f15b9"
       }
     }
   },

@@ -1,6 +1,6 @@
-import assert from 'assert';
+import * as assert from 'assert';
 import { Server } from 'http';
-import url from 'url';
+import * as url from 'url';
 import axios from 'axios';
 
 import app from '../src/app';

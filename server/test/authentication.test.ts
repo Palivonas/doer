@@ -1,5 +1,6 @@
-import assert from 'assert';
+import * as assert from 'assert';
 import app from '../src/app';
+import { cleanDatabase, givenUser } from './utils';
 
 describe('authentication', () => {
   it('registered the authentication service', () => {
@@ -7,23 +8,16 @@ describe('authentication', () => {
   });
   
   describe('local strategy', () => {
-    const userInfo = {
-      email: 'someone@example.com',
-      password: 'supersecret'
-    };
-
-    before(async () => {
-      try {
-        await app.service('users').create(userInfo);
-      } catch (error) {
-        // Do nothing, it just means the user already exists and can be tested
-      }
+    beforeEach(async () => {
+      await cleanDatabase();
     });
 
     it('authenticates user and creates accessToken', async () => {
+      const { user: mockUser } = await givenUser();
       const { user, accessToken } = await app.service('authentication').create({
         strategy: 'local',
-        ...userInfo
+        email: mockUser.email,
+        password: mockUser.password,
       }, {});
       
       assert.ok(accessToken, 'Created access token for user');
