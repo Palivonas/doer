@@ -3,21 +3,28 @@ import Activity from '../Activity/Activity';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 
-const activityList = () =>
+const activityList = (props: {
+  activities: {
+    avatarSrc: string;
+    title: string;
+    description: string;
+    people: string[];
+  }[]
+}) =>
   <List>
-    <Activity 
-      title="First activity"
-      description="Description of activity"
-      avatarSrc="http://localhost:3000/static/media/welcome-background.8ff711bd.jpg"
-      people={["Dude1", "Dude2"]}
-    />
-    <Divider variant="inset" component="li" />
-    <Activity
-      title="First activity"
-      description="Description of activity"
-      avatarSrc="http://localhost:3000/static/media/welcome-background.8ff711bd.jpg"
-      people={["Dude1", "Dude2"]}
-    />
+    {
+      props.activities.map(activity => 
+        <React.Fragment>
+          <Activity
+            title={activity.title}
+            description={activity.description}
+            avatarSrc={activity.avatarSrc}
+            people={activity.people}
+          />
+          <Divider variant="inset" component="li" />
+        </React.Fragment>
+        )
+    }
   </List>;
 
 export default activityList;
