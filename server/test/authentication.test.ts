@@ -8,7 +8,7 @@ describe('authentication', () => {
   });
   
   describe('local strategy', () => {
-    before(async () => {
+    beforeEach(async () => {
       await cleanDatabase();
     });
 

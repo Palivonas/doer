@@ -9,8 +9,8 @@ export default function (app: Application) {
   const mongooseClient: Mongoose = app.get('mongooseClient');
   const { Schema } = mongooseClient;
   const memberships = new Schema({
-    userId: { type: Types.ObjectId, required: true },
-    activityId: { type: Types.ObjectId, required: true },
+    userId: { type: Types.ObjectId, required: true, ref: 'users' },
+    activityId: { type: Types.ObjectId, required: true, ref: 'activities' },
   }, {
     timestamps: true
   });

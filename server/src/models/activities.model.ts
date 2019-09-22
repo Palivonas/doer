@@ -15,7 +15,7 @@ export default function (app: Application) {
   const activities = new Schema({
     title: { type: String, required: true },
     description: { type: String, default: '' },
-    createdById: { type: Types.ObjectId, required: true },
+    createdById: { type: Types.ObjectId, required: true, ref: 'users' },
     imageUrl: { type: String, required: true },
   }, {
     timestamps: true

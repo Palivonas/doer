@@ -12,6 +12,7 @@ export interface Activity {
   imageUrl: string,
   description: string,
   createdById: string,
+  memberCount: number,
 }
 
 export interface ChatMessage {
@@ -26,4 +27,5 @@ export interface Membership {
   _id: string,
   userId: string,
   activityId: string,
+  user?: User,
 }
