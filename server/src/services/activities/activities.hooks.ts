@@ -2,7 +2,7 @@ import { authenticate } from '../../hooks/authenticate';
 import { setUserId } from '../../hooks/set-user-id';
 import { HookContext, Paginated } from '@feathersjs/feathers';
 import { Activity, Membership } from '../../shared/entities';
-import { getItems } from 'feathers-hooks-common';
+import { disallow, getItems } from 'feathers-hooks-common';
 import { Memberships } from '../memberships/memberships.class';
 
 async function populateMemberCount(hook: HookContext<Activity | Activity[]>) {
@@ -27,13 +27,13 @@ export default {
   },
 
   after: {
-    all: [],
-    find: [ populateMemberCount ],
-    get: [ populateMemberCount ],
+    all: [ populateMemberCount ],
+    find: [],
+    get: [],
     create: [],
-    update: [ populateMemberCount ],
-    patch: [ populateMemberCount ],
-    remove: []
+    update: [ disallow('external') ],
+    patch: [],
+    remove: [ disallow('external') ]
   },
 
   error: {

@@ -1,6 +1,6 @@
 import { ObjectID } from 'bson';
 import { Application } from '../../src/declarations';
-import { Activity, Membership, User } from '../../src/shared/entities';
+import { Activity, Membership, User, ActivityMessage } from '../../src/shared/entities';
 import application from '../../src/app';
 import { Mongoose } from 'mongoose';
 
@@ -13,6 +13,7 @@ export async function cleanDatabase() {
   await mongoose.models.users.deleteMany({});
   await mongoose.models.activities.deleteMany({});
   await mongoose.models.memberships.deleteMany({});
+  await mongoose.models.messages.deleteMany({});
 }
 
 export async function givenUser() {
@@ -65,4 +66,14 @@ export async function givenMembership(activityId: string, userId: string = rando
   };
 
   return await app.service('memberships').create(membershipInfo) as Membership;
+}
+
+export async function givenMessage(senderId: string, activityId: string): Promise<ActivityMessage> {
+  const membershipInfo: Partial<ActivityMessage> = {
+    senderId,
+    activityId,
+    text: 'Wow',
+  };
+
+  return await app.service('messages').create(membershipInfo) as ActivityMessage;
 }

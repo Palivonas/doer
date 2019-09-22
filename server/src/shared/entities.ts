@@ -15,12 +15,13 @@ export interface Activity {
   memberCount: number,
 }
 
-export interface ChatMessage {
+export interface ActivityMessage {
   _id: string,
-  recipientId: string,
+  activityId: string,
   senderId: string,
   text: string,
   createdAt: string | Date,
+  sender?: User,
 }
 
 export interface Membership {
